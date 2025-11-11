@@ -24,7 +24,7 @@ const HeroWithLeaves: React.FC = () => {
         id: i,
         left: Math.random() * 100, // random horizontal position
         duration: 10 + Math.random() * 5, // 5-10 seconds
-        size: 30 + Math.random() * 30, // 30px-60px width
+        size: 50 + Math.random() * 30, // 30px-60px width
         delay: Math.random() * 10, // staggered start
         rotation: Math.random() * 360, // initial rotation
         distance: 450 + Math.random() * 100,
