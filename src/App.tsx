@@ -8,6 +8,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import "./index.css";
 import HeroWithLeaves from "./components/HeroWithLeaves";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -47,6 +48,11 @@ function App() {
 
                 <section id="contacts">
                   <Contact />
+                </section>
+              
+
+              <section id="contact">
+                <Footer/>
                 </section>
               </>
             }

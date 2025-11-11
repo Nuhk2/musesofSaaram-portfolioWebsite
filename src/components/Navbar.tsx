@@ -89,13 +89,13 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Desktop Links */}
-        <ul className="hidden md:flex space-x-8 text-sm font-neue">
+        <ul className="hidden md:flex space-x-8 text-lg font-silk">
           {links.map((link) => (
             <li key={link}>
               <button
                 type="button"
                 onClick={() => handleScrollTo(link.toLowerCase())}
-                className="hover:text-base hover:text-gold transition-all duration-300"
+                className="hover:text-xl hover:text-gold transition-all duration-300"
                
               >
                 {link}
