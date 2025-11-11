@@ -35,8 +35,8 @@ const fadeIn: Variants = {
       <div className="text-center">
         {/* Title */}
         <h1
-          className="text-8xl md:text-[12rem] sm:text-[10rem] lg:text-[256px] font-bold leading-none text-gold pt-40 
-      md:pt-40 select-none"
+          className="text-8xl md:text-[12rem] sm:text-[10rem] lg:text-[356px] font-bold leading-none text-gold pt-32 
+      md:pt-24 select-none"
         >
           {text.split("").map((char, i) => (
             <span
