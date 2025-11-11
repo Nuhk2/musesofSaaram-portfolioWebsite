@@ -64,7 +64,8 @@ const Navbar: React.FC = () => {
         scrolled ? "backdrop-blur-md bg-black/30 shadow-md rounded-full" : "bg-transparent"
       }`}
     >
-      <div className="flex items-center w-[90%] max-w-6xl px-6 py-4 space-x-10">
+      <div className="flex items-center w-[90%] max-w-6xl px-6 py-4 space-x-10 md:justify-start justify-between">
+
         {/* Logo */}
         <div
           role="button"
