@@ -7,7 +7,7 @@ import Services from "./components/Services";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import "./index.css";
-import HeroWithLeaves from "./components/HeroWithLeaves";
+import HeroWithLeaves from "./components/Hero/HeroWithLeaves";
 import Footer from "./components/Footer";
 
 function App() {
