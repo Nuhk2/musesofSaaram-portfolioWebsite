@@ -25,7 +25,7 @@ export const projects = [
     image: img3,
     description:
       "Campaign launch for Marshall’s new line of headphones with retro styling and concert-level sound quality.",
-    gallery: ["/Images/img3.jpg", "/Images/img4.jpg"],
+    gallery: [img1, img2, img3, img4],
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ export const projects = [
     image: img2,
     description:
       "A desert adventure campaign showcasing durability and outdoor spirit through photography and short films.",
-    gallery: ["/Images/img2.jpg", "/Images/img3.jpg"],
+    gallery: [img1, img2, img3, img4],
   },
   {
     id: 4,
@@ -47,6 +47,6 @@ export const projects = [
     image: img4,
     description:
       "Campaign launch for Marshall’s new line of headphones with retro styling and concert-level sound quality.",
-    gallery: ["/Images/img3.jpg", "/Images/img4.jpg"],
+    gallery: [img1, img2, img3, img4],
   },
 ];
