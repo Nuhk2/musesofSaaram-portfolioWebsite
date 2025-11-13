@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { projects } from "../data/portfolioData";
 
 const ProjectDetail: React.FC = () => {
   const { id } = useParams();
   const project = projects.find((p) => p.id === Number(id));
+
+  // Instant scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!project) {
     return <div className="text-white p-10">Project not found.</div>;
