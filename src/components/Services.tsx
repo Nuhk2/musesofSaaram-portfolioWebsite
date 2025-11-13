@@ -1,12 +1,50 @@
-import React from 'react';
+import React from "react";
 
-const Services: React.FC = () => (
-  <section className="">
-    <h2 id="services" className="text-5xl font-silk md:text-7xl text-gold text-center">Services</h2>
- 
- <p className="font-silk text-gold text-center pl-32 pr-32 pt-5 pb-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni est, mollitia temporibus repudiandae aliquid molestias totam deserunt, vel praesentium omnis provident consectetur! Voluptatem vitae minus nemo sint. Tempore aspernatur impedit nisi a ducimus beatae quis, repudiandae cumque dolorem dolorum dolores vitae amet, error culpa fuga. Tempora iusto accusamus ipsa corrupti magni voluptatem delectus asperiores debitis a culpa laboriosam, aperiam et in necessitatibus magnam tenetur quia quod doloribus! In, rem optio aspernatur distinctio suscipit quaerat maiores autem repudiandae! Pariatur totam fugit iure sapiente nulla obcaecati vitae natus quas sequi inventore ea officiis est error adipisci molestias facilis porro cupiditate quis quisquam ipsa, officia, ullam possimus, exercitationem labore! Velit ullam labore iste, maiores vel ex asperiores neque sapiente. Fuga praesentium officiis hic!</p>
- 
-  </section>
-);
+const Services: React.FC = () => {
+  const services = [
+    {
+      title: "Portrait Photography",
+      description:
+        "Capturing emotions and personalities through expressive and creative portrait sessions."
+    },
+    {
+      title: "Landscape Photography",
+      description:
+        "Freezing breathtaking sceneries and natural beauty with attention to light and detail."
+    },
+    {
+      title: "Event Photography",
+      description:
+        "Documenting important moments at weddings, concerts, and events with a storytelling approach."
+    },
+    {
+      title: "Photo Editing",
+      description:
+        "Enhancing images professionally to achieve a polished and artistic finish."
+    }
+  ];
+
+  return (
+    <section className="px-6 sm:px-12 md:px-48 py-20 text-[#d8b26e] font-neue ">
+      {/* Section Title */}
+      <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center">
+        My Services
+      </h2>
+
+      {/* Services Grid */}
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {services.map((service, index) => (
+          <div
+            key={index}
+            className="bg-[#262626] rounded-2xl p-6 hover:bg-[#d8b26e] hover:text-[#1a1a1a] transition-colors duration-300 shadow-md"
+          >
+            <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
+            <p className="text-sm">{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 export default Services;

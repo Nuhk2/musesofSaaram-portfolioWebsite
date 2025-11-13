@@ -1,12 +1,143 @@
-import React from 'react';
+import React from "react";
+import AnimatedTagline from "./Hero/AnimatedTagline";
 
-const Contact: React.FC = () => (
-  <section id="contact" className="">
-    <h2 className="text-5xl font-silk md:text-7xl text-gold text-center ">Contact</h2>
-  
-  <p className="font-silk text-gold text-center pl-32 pr-32 pt-5 pb-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni est, mollitia temporibus repudiandae aliquid molestias totam deserunt, vel praesentium omnis provident consectetur! Voluptatem vitae minus nemo sint. Tempore aspernatur impedit nisi a ducimus beatae quis, repudiandae cumque dolorem dolorum dolores vitae amet, error culpa fuga. Tempora iusto accusamus ipsa corrupti magni voluptatem delectus asperiores debitis a culpa laboriosam, aperiam et in necessitatibus magnam tenetur quia quod doloribus! In, rem optio aspernatur distinctio suscipit quaerat maiores autem repudiandae! Pariatur totam fugit iure sapiente nulla obcaecati vitae natus quas sequi inventore ea officiis est error adipisci molestias facilis porro cupiditate quis quisquam ipsa, officia, ullam possimus, exercitationem labore! Velit ullam labore iste, maiores vel ex asperiores neque sapiente. Fuga praesentium officiis hic!</p>
-  
-  </section>
-);
+const Contact: React.FC = () => {
+  return (
+    <section className="text-[#d8b26e] px-6 sm:px-12 md:px-48 py-20 pt-28 font-neue">
+      {/* Title */}
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-14">
+        <span className="text-[#d8b26e]/70 font-silk italic">hello,</span>{" "}
+        <span className="font-medium tracking-wide">SAARAM</span>
+      </h2>
+
+      {/* Form */}
+      <form className="flex flex-col gap-10 max-w-5xl text-[#d8b26e]">
+        {/* ROW 1 */}
+        <div className="flex flex-col sm:flex-row gap-8">
+          {/* NAME */}
+          <div className="flex-1 flex items-center gap-4">
+            <label className="text-base md:text-2xl sm:text-2xl font-regular whitespace-nowrap">
+              MY NAME IS
+            </label>
+
+            {/* wrapper must be relative */}
+            <div className="relative flex-1">
+              {/* input is peer */}
+              <input
+                type="text"
+                placeholder="your name"
+                className="peer w-full bg-transparent text-sm sm:text-base placeholder-[#d8b26e]/40 focus:outline-none pb-2 border-none"
+                aria-label="your name"
+              />
+              {/* static subtle baseline if you want — optional, remove if undesired */}
+              <div className="absolute left-0 right-0 bottom-0 h-[1px] bg-[#d8b26e]/15"></div>
+
+              {/* animated underline: expands on peer focus */}
+              <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-[#d8b26e] transition-all duration-300 ease-out peer-focus:w-full"></span>
+            </div>
+          </div>
+
+          {/* FROM */}
+          <div className="flex-1 flex items-center gap-4">
+            <label className="text-base md:text-2xl sm:text-2xl font-regular whitespace-nowrap">
+              I’M FROM
+            </label>
+
+            <div className="relative flex-1">
+              <input
+                type="text"
+                placeholder="company name or website"
+                className="peer w-full bg-transparent text-sm sm:text-base placeholder-[#d8b26e]/40 focus:outline-none pb-2 border-none"
+                aria-label="company"
+              />
+              <div className="absolute left-0 right-0 bottom-0 h-[1px] bg-[#d8b26e]/15"></div>
+              <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-[#d8b26e] transition-all duration-300 ease-out peer-focus:w-full"></span>
+            </div>
+          </div>
+        </div>
+
+        {/* ROW 2: PROJECT */}
+        <div className="flex items-center gap-4">
+          <label className="text-base md:text-2xl sm:text-2xl font-regular whitespace-nowrap">
+            DESCRIBE YOUR PROJECT
+          </label>
+          <div className="relative flex-1">
+            <input
+              type="text"
+              placeholder="your project idea"
+              className="peer w-full bg-transparent text-sm sm:text-base placeholder-[#d8b26e]/40 focus:outline-none pb-2 border-none"
+              aria-label="project"
+            />
+            <div className="absolute left-0 right-0 bottom-0 h-[1px] bg-[#d8b26e]/15"></div>
+            <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-[#d8b26e] transition-all duration-300 ease-out peer-focus:w-full"></span>
+          </div>
+        </div>
+
+        {/* ROW 3: EMAIL + OR */}
+        <div className="flex flex-col sm:flex-row gap-8">
+          <div className="flex-1 flex items-center gap-4">
+            <label className="text-base md:text-2xl sm:text-2xl font-regular whitespace-nowrap">
+              YOU CAN EMAIL ME AT
+            </label>
+            <div className="relative flex-1">
+              <input
+                type="email"
+                placeholder="your email"
+                className="peer w-full bg-transparent text-sm sm:text-base placeholder-[#d8b26e]/40 focus:outline-none pb-2 border-none"
+                aria-label="email"
+              />
+              <div className="absolute left-0 right-0 bottom-0 h-[1px] bg-[#d8b26e]/15"></div>
+              <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-[#d8b26e] transition-all duration-300 ease-out peer-focus:w-full"></span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <label className="text-base md:text-2xl sm:text-2xl font-regular whitespace-nowrap">
+              OR
+            </label>
+            <div className="relative flex-1 min-w-[180px]">
+              <input
+                type="text"
+                placeholder="enter other way"
+                className="peer w-full bg-transparent text-sm sm:text-base placeholder-[#d8b26e]/40 focus:outline-none pb-2 border-none"
+                aria-label="other"
+              />
+              <div className="absolute left-0 right-0 bottom-0 h-[1px] bg-[#d8b26e]/15"></div>
+              <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-[#d8b26e] transition-all duration-300 ease-out peer-focus:w-full"></span>
+            </div>
+          </div>
+        </div>
+
+        {/* ROW 4 */}
+        <div className="flex items-center gap-4">
+          <label className="text-base md:text-2xl sm:text-2xl font-regular whitespace-nowrap">
+            I FOUND YOU THROUGH
+          </label>
+          <div className="relative flex-1">
+            <input
+              type="text"
+              placeholder="provide how (optional)"
+              className="peer w-full bg-transparent text-sm sm:text-base placeholder-[#d8b26e]/40 focus:outline-none pb-2 border-none"
+              aria-label="found-through"
+            />
+            <div className="absolute left-0 right-0 bottom-0 h-[1px] bg-[#d8b26e]/15"></div>
+            <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-[#d8b26e] transition-all duration-300 ease-out peer-focus:w-full"></span>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 pt-8">
+          <AnimatedTagline />
+          <button
+            type="submit"
+            className="border border-[#d8b26e]/60 rounded-full px-10 py-2 text-sm sm:text-base text-[#d8b26e] hover:bg-[#d8b26e] hover:text-black transition-all"
+          >
+            send
+          </button>
+        </div>
+      </form>
+    </section>
+  );
+};
 
 export default Contact;

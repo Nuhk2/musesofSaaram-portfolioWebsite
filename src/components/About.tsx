@@ -1,12 +1,51 @@
-import React from 'react';
+import React from "react";
 
-const About: React.FC = () => (
-  <section id="about" className="">
-    <h2 className="text-5xl font-silk md:text-7xl text-gold text-center">About</h2>
-  
-  <p className="font-silk text-gold text-center pl-32 pr-32 pt-5 pb-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni est, mollitia temporibus repudiandae aliquid molestias totam deserunt, vel praesentium omnis provident consectetur! Voluptatem vitae minus nemo sint. Tempore aspernatur impedit nisi a ducimus beatae quis, repudiandae cumque dolorem dolorum dolores vitae amet, error culpa fuga. Tempora iusto accusamus ipsa corrupti magni voluptatem delectus asperiores debitis a culpa laboriosam, aperiam et in necessitatibus magnam tenetur quia quod doloribus! In, rem optio aspernatur distinctio suscipit quaerat maiores autem repudiandae! Pariatur totam fugit iure sapiente nulla obcaecati vitae natus quas sequi inventore ea officiis est error adipisci molestias facilis porro cupiditate quis quisquam ipsa, officia, ullam possimus, exercitationem labore! Velit ullam labore iste, maiores vel ex asperiores neque sapiente. Fuga praesentium officiis hic!</p>
-  
-  </section>
-);
+import profilePic from "../Images/project1/3.jpeg"
+const About: React.FC = () => {
+  return (
+    <section className="px-6 sm:px-12 md:px-48 py-36 text-[#d8b26e] font-neue ">
+      {/* Section Title */}
+      <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-center">
+        About Me
+      </h2>
+
+      {/* Content Wrapper */}
+      <div className="flex flex-col md:flex-row items-center gap-10">
+        
+        {/* Image */}
+        <div className="md:w-1/3 w-full flex justify-center">
+          <img
+            src={profilePic}
+            alt="Your Name"
+            className="rounded-2xl shadow-lg w-64 h-64 object-cover"
+          />
+        </div>
+
+        {/* Text */}
+        <div className="md:w-2/3 w-full text-center md:text-left space-y-4">
+          <p>
+            Hello! I'm Saaram, a passionate photographer based in Islamabad, Pakistan. I specialize in capturing 
+            landscapes, portraits, or events with a unique perspective and attention to detail.
+          </p>
+          <p>
+            Photography for me is more than just images—it's about telling stories, capturing emotions, and freezing moments in time 
+            that speak to the soul. My work combines creativity with technical expertise to deliver visuals that are both beautiful and meaningful.
+          </p>
+          <p>
+            When I'm not behind the camera, I enjoy [hobby/interest] and constantly exploring new techniques to elevate my craft.
+          </p>
+
+          {/* Optional CTA Button */}
+          <a
+            href="#contacts"
+            className="inline-block mt-4 px-6 py-2 border border-[#d8b26e] rounded-2xl hover:bg-[#d8b26e] hover:text-[#1a1a1a] transition-colors duration-300"
+          >
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default About;

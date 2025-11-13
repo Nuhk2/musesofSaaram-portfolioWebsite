@@ -1,8 +1,7 @@
-import img1 from "../../Images/img1.jpg";
-import img2 from "../../Images/img2.jpg";
-import img3 from "../../Images/img3.jpg";
-import img4 from "../../Images/img4.jpg";
-
+import img1 from "../../Images/project1/1.jpeg";
+import img2 from "../../Images/project1/2.jpeg";
+import img3 from "../../Images/project1/3.jpeg";
+import img4 from "../../Images/project1/5.jpeg";
 const ImageGallery = () => {
   const images = [
     { src: img1, caption: "Forest Morning" },

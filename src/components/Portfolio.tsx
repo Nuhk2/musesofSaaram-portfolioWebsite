@@ -1,4 +1,6 @@
-import React from "react";
+import React , { useEffect } from "react";
+import { motion, useAnimation, Variants } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
 import { projects } from "../data/portfolioData";
 
@@ -9,15 +11,78 @@ const Portfolio: React.FC = () => {
     rows.push(projects.slice(i, i + 2));
   }
 
+   // --- animation setup ---
+  const controls = useAnimation();
+const [ref, inView] = useInView({
+  threshold: 0.2, // triggers when 20% of the section is visible
+  triggerOnce: false, // set to true if you want it to animate only once
+});
+
+useEffect(() => {
+  if (inView) {
+    controls.start("visible");
+  } else {
+    controls.start("hidden");
+  }
+}, [controls, inView]);
+
+const fadeIn: Variants = {
+  hidden: { opacity: 0, y: 60 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 2, ease: [0.25, 0.1, 0.25, 1] },
+  },
+};
+
   return (
     <section className=" text-white py-20 px-6 md:px-20 lg:px-32">
       {/* Header */}
-      <div className="text-center mb-16">
-        <p className="italic text-[#D1B38E] font-silk text-lg">let’s</p>
-        <h2 className="text-5xl text-gold font-bold leading-tight">
-          CREATE <br /> SOMETHING <br /> AWESOME
-        </h2>
-      </div>
+      <motion.div
+                ref={ref}
+                className="text-gold flex items-center justify-center px-6 sm:px-10 md:px-16 lg:px-24 py-16 sm:py-12 md:py-20 lg:min-h-screen"
+                variants={fadeIn}
+                initial="hidden"
+                animate={controls}
+              >
+
+      <div className="space-y-[-10px] sm:space-y-[-15px] md:space-y-[-20px] text-left">
+            {/* the ESSENCE */}
+            <div className="flex items-center">
+              <p className="italic font-silk text-beige mr-2 sm:mr-3 text-4xl sm:text-5xl md:text-6xl lg:text-[78px]">
+                Let's
+              </p>
+              <p className="uppercase font-regular text-beige leading-none text-5xl sm:text-6xl md:text-7xl lg:text-[98px]">
+                CREATE
+              </p>
+            </div>
+
+            {/* of CREATIVITY */}
+            <div className="flex items-center pl-6 sm:pl-8 md:pl-12">
+              
+              <p className="uppercase font-regular text-beige leading-none text-5xl sm:text-6xl md:text-7xl lg:text-[98px]">
+                SOMETHING
+              </p>
+            </div>
+
+            {/* is NOT TO BE */}
+            <div className="flex items-center pl-10 sm:pl-14 md:pl-20">
+              
+              <p className="uppercase font-regular text-beige leading-none text-5xl sm:text-6xl md:text-7xl lg:text-[98px]">
+                AWESOME
+              </p>
+            </div>
+
+            {/* AFRAID
+            <div className="flex items-center pl-20 sm:pl-28 md:pl-44">
+              <p className="uppercase font-bold text-beige leading-none text-5xl sm:text-6xl md:text-7xl lg:text-[98px]">
+                AFRAID
+              </p>
+            </div> */}
+            
+          </div>
+          </motion.div>
+         
 
       {/* Portfolio Rows */}
       <div className="flex flex-col gap-24 max-w-7xl mx-auto">
