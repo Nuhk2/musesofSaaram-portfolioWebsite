@@ -12,10 +12,12 @@ const Navbar: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
+    const handleScroll = () => {setScrolled(window.scrollY > 10);
+    if (menuOpen) setMenuOpen(false); // close menu on scroll
+  };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [menuOpen]);
 
   /**
    * Scroll helper that retries until the element appears (useful when navigating to "/"
@@ -115,23 +117,41 @@ const Navbar: React.FC = () => {
         </button>
 
         {/* Mobile Menu Dropdown */}
-        {menuOpen && (
-          <div className="absolute top-16 right-4 w-48 bg-black/70 backdrop-blur-lg rounded-2xl shadow-lg md:hidden">
-            <ul className="flex flex-col p-4 space-y-3 text-sm font-neue">
-              {links.map((link) => (
-                <li key={link}>
-                  <button
-                    type="button"
-                    onClick={() => handleScrollTo(link.toLowerCase())}
-                    className="block text-white hover:text-gold transition-colors w-full text-left"
-                  >
-                    {link}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+       
+  <div
+  className={`fixed inset-0 z-50 bg-black/80 backdrop-blur-xl flex flex-col items-center justify-center md:hidden
+    transform transition-all duration-300 ease-in-out
+    ${menuOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"}`}
+>
+  <ul className="flex flex-col text-2xl font-silk text-white w-3/4 max-w-xs mx-auto">
+  {links.map((link, index) => (
+    <li key={link} className="w-full flex flex-col items-center">
+      <button
+        type="button"
+        onClick={() => handleScrollTo(link.toLowerCase())}
+        className="hover:text-gold transition-colors py-2 text-center"
+      >
+        {link}
+      </button>
+
+      {/* Separator except for last item */}
+      {index !== links.length - 1 && (
+        <div className="h-px bg-gold/50 w-2/3 mt-2 mb-2"></div>
+      )}
+    </li>
+  ))}
+</ul>
+
+  {/* Close Button */}
+  <button
+    onClick={() => setMenuOpen(false)}
+    className="absolute top-6 right-6 text-white hover:text-gold"
+    aria-label="Close menu"
+  >
+    <X size={32} />
+  </button>
+</div>
+        
       </div>
     </nav>
   );
