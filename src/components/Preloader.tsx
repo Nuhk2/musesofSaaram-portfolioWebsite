@@ -17,19 +17,18 @@ const Preloader = () => {
           clearInterval(progressInterval);
           return 100;
         }
-        return prev + 2; // Adjust speed here
+        return prev + 2;
       });
-    }, 40); // Adjust timing here
+    }, 40);
 
-    // Complete loading and fade out
+    // Complete loading only when both text and loader are done
     const timer = setTimeout(() => {
       setFadeOut(true);
       setTimeout(() => {
         setLoading(false);
-        // Ensure scroll to top when preloader unmounts
         window.scrollTo(0, 0);
       }, 800);
-    }, 2500); // Total duration matches progress
+    }, 3500); // Reduced from 2500ms to 2000ms to match progress
 
     return () => {
       clearInterval(progressInterval);
@@ -60,11 +59,12 @@ const Preloader = () => {
     gap: 'clamp(0.3rem, 1.5vw, 1rem)',
     alignItems: 'center',
     marginBottom: '1.5rem',
+    textTransform: 'none',
   };
 
   // Individual character styles
   const getCharStyle = (index: number): CSSProperties => {
-    const charProgress = Math.min(100, Math.max(0, (progress - (index * 20)) * 1.25));
+    const charProgress = Math.min(100, Math.max(0, (progress - (index * 15)) * 1.5));
     const isVisible = charProgress > 0;
     
     return {
@@ -90,6 +90,7 @@ const Preloader = () => {
     backgroundColor: 'rgba(74, 74, 74, 0.3)',
     borderRadius: '2px',
     overflow: 'hidden',
+    margin: '0 auto',
   };
 
   // Loading bar progress
@@ -109,7 +110,7 @@ const Preloader = () => {
       <div style={{ textAlign: 'center' as const }}>
         {/* Lowercase "muses" text */}
         <div style={textContainerStyles}>
-          {'hehe'.split('').map((char, index) => (
+          {'muses'.split('').map((char, index) => (
             <span key={index} style={getCharStyle(index)}>
               {char}
             </span>
@@ -120,17 +121,6 @@ const Preloader = () => {
         <div style={loadingBarContainerStyles}>
           <div style={loadingBarStyles} />
         </div>
-        
-        {/* Optional percentage text */}
-        <p style={{
-          color: '#D1B38E',
-          fontSize: '0.9rem',
-          marginTop: '1rem',
-          opacity: 0.7,
-          fontFamily: 'font-neue, sans-serif',
-        }}>
-          {Math.round(progress)}%
-        </p>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ import ProjectDetail from "./components/ProjectDetail";
 import HeroWithLeaves from "./components/Hero/HeroWithLeaves";
 import Footer from "./components/Footer";
 import ScrollToHash from "./components/ScrollToHash";
-
+import Preloader from "./components/Preloader";
 function App() {
   return (
    
@@ -31,6 +31,7 @@ function App() {
               <>
                 {/* Assign IDs so Navbar buttons can scroll to these sections */}
                 
+                <Preloader />
                 <section id="hero">
                   <HeroWithLeaves />
                 </section>
