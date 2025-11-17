@@ -1,139 +1,47 @@
-// src/components/Preloader.tsx
-import { useEffect, useState, CSSProperties } from 'react';
+import React, { useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import { projects } from "../data/portfolioData";
 
-const Preloader = () => {
-  const [loading, setLoading] = useState<boolean>(true);
-  const [fadeOut, setFadeOut] = useState<boolean>(false);
-  const [progress, setProgress] = useState<number>(0);
+const ProjectDetail: React.FC = () => {
+  const { id } = useParams();
+  const project = projects.find((p) => p.id === Number(id));
 
+  // Instant scroll to top when component mounts
   useEffect(() => {
-    // Scroll to top when component mounts
     window.scrollTo(0, 0);
-
-    // Smooth progress animation
-    const progressInterval = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(progressInterval);
-          return 100;
-        }
-        return prev + 2; // Adjust speed here
-      });
-    }, 40); // Adjust timing here
-
-    // Complete loading and fade out
-    const timer = setTimeout(() => {
-      setFadeOut(true);
-      setTimeout(() => {
-        setLoading(false);
-        // Ensure scroll to top when preloader unmounts
-        window.scrollTo(0, 0);
-      }, 800);
-    }, 2500); // Total duration matches progress
-
-    return () => {
-      clearInterval(progressInterval);
-      clearTimeout(timer);
-    };
   }, []);
 
-  // Main container styles
-  const preloaderStyles: CSSProperties = {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#121110',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 9999,
-    transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-    opacity: fadeOut ? 0 : 1,
-    pointerEvents: fadeOut ? 'none' : 'all',
-  };
-
-  // Text container
-  const textContainerStyles: CSSProperties = {
-    display: 'flex',
-    gap: 'clamp(0.3rem, 1.5vw, 1rem)',
-    alignItems: 'center',
-    marginBottom: '1.5rem',
-  };
-
-  // Individual character styles
-  const getCharStyle = (index: number): CSSProperties => {
-    const charProgress = Math.min(100, Math.max(0, (progress - (index * 20)) * 1.25));
-    const isVisible = charProgress > 0;
-    
-    return {
-      display: 'inline-block',
-      color: `color-mix(in srgb, #4A4A4A ${100 - charProgress}%, #D1B38E ${charProgress}%)`,
-      fontSize: 'clamp(3rem, 12vw, 8rem)',
-      fontFamily: 'font-neue, sans-serif',
-      fontWeight: 600,
-      letterSpacing: '0.02em',
-      textTransform: 'none',
-      transition: 'all 0.3s ease',
-      transform: `translateY(${isVisible ? '0' : '10px'}) scale(${1 + (charProgress * 0.003)})`,
-      opacity: isVisible ? 1 : 0,
-      textShadow: charProgress > 50 ? `0 0 ${charProgress * 0.3}px rgba(209, 179, 142, ${charProgress * 0.005})` : 'none',
-      filter: `grayscale(${100 - charProgress}%) brightness(${100 + (charProgress * 0.5)}%)`,
-    };
-  };
-
-  // Loading bar container
-  const loadingBarContainerStyles: CSSProperties = {
-    width: 'clamp(200px, 50vw, 400px)',
-    height: '3px',
-    backgroundColor: 'rgba(74, 74, 74, 0.3)',
-    borderRadius: '2px',
-    overflow: 'hidden',
-  };
-
-  // Loading bar progress
-  const loadingBarStyles: CSSProperties = {
-    width: `${progress}%`,
-    height: '100%',
-    backgroundColor: '#D1B38E',
-    borderRadius: '2px',
-    transition: 'width 0.1s linear',
-    boxShadow: '0 0 10px rgba(209, 179, 142, 0.5)',
-  };
-
-  if (!loading) return null;
+  if (!project) {
+    return <div className="text-white p-10">Project not found.</div>;
+  }
 
   return (
-    <div style={preloaderStyles}>
-      <div style={{ textAlign: 'center' as const }}>
-        {/* Lowercase "muses" text */}
-        <div style={textContainerStyles}>
-          {'hehe'.split('').map((char, index) => (
-            <span key={index} style={getCharStyle(index)}>
-              {char}
-            </span>
-          ))}
-        </div>
-        
-        {/* Loading bar */}
-        <div style={loadingBarContainerStyles}>
-          <div style={loadingBarStyles} />
-        </div>
-        
-        {/* Optional percentage text */}
-        <p style={{
-          color: '#D1B38E',
-          fontSize: '0.9rem',
-          marginTop: '1rem',
-          opacity: 0.7,
-          fontFamily: 'font-neue, sans-serif',
-        }}>
-          {Math.round(progress)}%
-        </p>
+    <section className="bg-[#121110] text-white py-12 pt-28 md:px-16">
+      <Link to="/#projects" className="text-[#D1B38E] mb-6 inline-block">
+        ← Back to Portfolio
+      </Link>
+
+      <h1 className="text-6xl font-neuefont-semibold mb-2">{project.title}</h1>
+      <p className="text-gray-400 mb-6">{project.category}</p>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 max-w-6xl mx-auto">
+        {project.gallery.map((img, i) => (
+          <img
+            key={i}
+            src={img}
+            alt=""
+            className="w-full h-80 object-cover rounded-lg"
+          />
+        ))}
       </div>
-    </div>
+
+      <p className="text-gray-300 leading-relaxed">{project.description}</p>
+
+      <Link to="/#projects" className="text-[#D1B38E] mb-6 mt-6 inline-block">
+        ← Back to Portfolio
+      </Link>
+    </section>
   );
 };
 
-export default Preloader;
+export default ProjectDetail;
