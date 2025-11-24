@@ -1,11 +1,13 @@
 import React from "react";
 import AnimatedTagline from "./Hero/AnimatedTagline";
+import GoldDivider from "./GoldDivider";
 
 const Contact: React.FC = () => {
   return (
-    <section className="text-[#d8b26e] px-6 sm:px-12 md:px-48 py-20 pt-28 font-neue">
+    <section className="text-[#d8b26e] px-6 sm:px-12 md:px-48 py-20 pt-8 font-neue">
+      <GoldDivider />
       {/* Title */}
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-14">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-14 pt-8">
         <span className="text-[#d8b26e]/70 font-silk italic">hello,</span>{" "}
         <span className="font-medium tracking-wide">SAARAM</span>
       </h2>

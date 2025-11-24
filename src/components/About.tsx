@@ -1,5 +1,4 @@
 import React from "react";
-
 import profilePic from "../Images/project1/3.jpeg"
 const About: React.FC = () => {
   return (

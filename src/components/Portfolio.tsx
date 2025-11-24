@@ -36,11 +36,11 @@ const fadeIn: Variants = {
 };
 
   return (
-    <section className=" text-white py-20 px-6 md:px-20 lg:px-32">
+    <section className=" text-white py-20 px-0 md:px-20 lg:px-32">
       {/* Header */}
       <motion.div
                 ref={ref}
-                className="text-gold flex items-center justify-center px-6 sm:px-10 md:px-16 lg:px-24 py-16 sm:py-12 md:py-20 lg:min-h-screen"
+                className="text-gold flex items-center justify-center px-6 sm:px-10 md:px-16 lg:px-24 py-16 sm:py-12 md:py-20 "
                 variants={fadeIn}
                 initial="hidden"
                 animate={controls}
